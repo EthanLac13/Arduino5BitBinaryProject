@@ -71,6 +71,11 @@ void loop() {
     digitalWrite(11, LOW);
   }
 
+  if (timer > 63)
+  {
+    timer = 0;
+  }
+
   // delay based on the potentiometer
   delay(750 - (val / 2));
 }
