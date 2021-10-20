@@ -1,10 +1,9 @@
-int potPin = 0;
-int val = 0;
-int timer = 0;
-int subTimer = 0;
+int potPin = 0; // value of the analog port to read from
+int val = 0; // analog value from the potentiometer
+int timer = 0; // timer for incrementing the bits
 
 void setup() {
-  // put your setup code here, to run once:
+  // initialize output pins and begin serial use
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
   pinMode(9, OUTPUT);
@@ -14,10 +13,10 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  // get the analog value from potPin
   val = analogRead(potPin);
-  //Serial.println(val);
-  //delay(200);
+
+  // increment the timer
   timer++;
   Serial.println(timer);
 
@@ -71,6 +70,7 @@ void loop() {
     digitalWrite(11, LOW);
   }
 
+  // set the timer back to 0 every so often, so it doesn't eventually overflow
   if (timer > 63)
   {
     timer = 0;
